@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Test</title>
+    <style>
+        body {
+            color: white;
+            background-color: black;
+        }
+        .parent{
+            margin-top: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 50px;
+        }
+        .coord{
+            background-color: blueviolet;
+            color: white;
+            border-radius: 10px;
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <span>Longitude</span>
+        <div id="lon" class="coord"></div>
+        <span>Latitude</span>
+        <div id="lat" class="coord"></div>
+        <span>Altitude</span>
+        <div id="alt" class="coord"></div>
+        <!-- <div id="btn">Refresh</div> -->
+    </div>
+    <script>
+        function refresh()
+        {
+            navigator.geolocation.getCurrentPosition((position) => {
+                document.getElementById('lon').innerHTML = position.coords.longitude;
+                document.getElementById('lat').innerHTML = position.coords.latitude;
+                document.getElementById('alt').innerHTML = position.coords.altitude;
+            });
+        }
+        // document.getElementById('btn').addEventListener("click",refresh);
+        setInterval(refresh,100);
+    </script>
+</body>
+</html>
