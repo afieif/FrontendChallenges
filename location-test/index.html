@@ -61,7 +61,7 @@
             const c = Math.cos;
             const a = 0.5 - c((lt - lt1) * p)/2 + c(lt1 * p) * c(lt * p) * (1 - c((ln - ln1) * p))/2;
             const res =  12742 * Math.asin(Math.sqrt(a)) * 1000;
-            document.getElementById('alt').innerHTML = res;
+            document.getElementById('alt').innerHTML = res.toFixed(2);
         }
         function success(position){
                 document.getElementById('lon').innerHTML = position.coords.longitude;
