@@ -38,13 +38,22 @@
         <!-- <div id="btn">Refresh</div> -->
     </div>
     <script>
-        function refresh()
-        {
-            navigator.geolocation.getCurrentPosition((position) => {
+        function success(position){
                 document.getElementById('lon').innerHTML = position.coords.longitude;
                 document.getElementById('lat').innerHTML = position.coords.latitude;
                 document.getElementById('alt').innerHTML = position.coords.altitude;
-            });
+            }
+            function error(){
+                console.log('error');
+            }
+            const options = {
+                enableHighAccuracy: true,
+                maximumAge: 30000,
+                timeout: 27000
+            }
+        function refresh()
+        {
+            navigator.geolocation.watchPosition(success,error,options);
         }
         // document.getElementById('btn').addEventListener("click",refresh);
         setInterval(refresh,100);
